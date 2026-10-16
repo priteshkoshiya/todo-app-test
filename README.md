@@ -1,4 +1,4 @@
-# nextjs-static starter v1
+# nextjs-static starter v12
 
 Tailwind CSS v3 is preinstalled. `tailwind.config.js` maps theme tokens
 (`bg-bg`, `text-primary`, `font-heading`, …) to the CSS variables in
