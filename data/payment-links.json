@@ -1,0 +1,48 @@
+{
+  "connected": true,
+  "livemode": false,
+  "checkout": {
+    "api": "http://localhost:8001",
+    "project_id": "af18e1aa-dab5-4b9b-87bd-2415c5a10381",
+    "embedded": true,
+    "accounts": false
+  },
+  "items": [
+    {
+      "name": "Premium Wireless Headphones",
+      "amount": 129.0,
+      "currency": "usd",
+      "interval": null,
+      "price_id": "price_1UOEbTGjQmRHcMGLdi3N3ic5",
+      "url": "https://buy.stripe.com/test_14A00j3PHct2aFYe5D4ZG04",
+      "custom_amount": null
+    },
+    {
+      "name": "Todo Pro",
+      "amount": 9.0,
+      "currency": "usd",
+      "interval": "month",
+      "price_id": "price_1UOBWJGjQmRHcMGLHnFyWif3",
+      "url": "https://buy.stripe.com/test_00wfZh5XP50A15o4v34ZG03",
+      "custom_amount": null
+    },
+    {
+      "name": "Gift Box",
+      "amount": 499.0,
+      "currency": "inr",
+      "interval": null,
+      "price_id": "price_1UOAHsGjQmRHcMGLreSzBjmY",
+      "url": "https://buy.stripe.com/test_6oUdR90Dv50A9BUd1z4ZG01",
+      "custom_amount": null
+    },
+    {
+      "name": "Pro",
+      "amount": 29.0,
+      "currency": "usd",
+      "interval": "month",
+      "price_id": "price_1UNWwdGjQmRHcMGLWpFpZwR8",
+      "url": "https://buy.stripe.com/test_fZu14neuleBa6pI0eN4ZG00",
+      "custom_amount": null
+    }
+  ]
+}

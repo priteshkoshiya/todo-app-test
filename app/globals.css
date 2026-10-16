@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #080B18;
+  --color-surface: #11162A;
+  --color-text: #F8FAFC;
+  --color-muted: #A5AEC5;
+  --color-primary: #5E7BFF;
+  --color-accent: #8FA8FF;
+  --color-hairline: rgba(165, 174, 197, 0.15);
+  --font-heading: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+}
