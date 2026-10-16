@@ -11,9 +11,24 @@ interface Task {
 export default function TodoApp() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [input, setInput] = useState("");
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Load from localStorage after mount
+  // Load theme from localStorage after mount
+  useEffect(() => {
+    const saved = localStorage.getItem("todo-theme");
+    if (saved === "light" || saved === "dark") {
+      setTheme(saved);
+    }
+  }, []);
+
+  // Apply theme to <html> and persist
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("todo-theme", theme);
+  }, [theme]);
+
+  // Load tasks from localStorage after mount
   useEffect(() => {
     const saved = localStorage.getItem("todo-tasks");
     if (saved) {
@@ -25,10 +40,14 @@ export default function TodoApp() {
     }
   }, []);
 
-  // Persist to localStorage on change
+  // Persist tasks to localStorage on change
   useEffect(() => {
     localStorage.setItem("todo-tasks", JSON.stringify(tasks));
   }, [tasks]);
+
+  function toggleTheme() {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  }
 
   function addTask() {
     const text = input.trim();
@@ -58,12 +77,12 @@ export default function TodoApp() {
   const remaining = tasks.filter((t) => !t.completed).length;
 
   return (
-    <div className="min-h-screen bg-bg flex items-start justify-center px-4 pt-16 pb-16">
+    <div className="min-h-screen bg-bg flex items-start justify-center px-4 pt-16 pb-16 transition-colors duration-300">
       <div className="w-full max-w-md">
         {/* Header */}
-        <div className="mb-8 text-center">
+        <div className="mb-8 text-center relative">
           <h1 className="text-3xl font-bold text-text tracking-tight">
-            My Tasks 11111111111
+            My Tasks
           </h1>
           {tasks.length > 0 && (
             <p className="mt-1 text-sm text-muted">
@@ -72,6 +91,48 @@ export default function TodoApp() {
                 : `${remaining} task${remaining !== 1 ? "s" : ""} remaining`}
             </p>
           )}
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            className="absolute right-0 top-0 w-9 h-9 flex items-center justify-center rounded-full border border-hairline text-muted hover:text-text hover:border-primary transition-colors"
+          >
+            {theme === "dark" ? (
+              /* Sun icon */
+              <svg
+                viewBox="0 0 24 24"
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <line x1="12" y1="2" x2="12" y2="4" />
+                <line x1="12" y1="20" x2="12" y2="22" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="2" y1="12" x2="4" y2="12" />
+                <line x1="20" y1="12" x2="22" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            ) : (
+              /* Moon icon */
+              <svg
+                viewBox="0 0 24 24"
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            )}
+          </button>
         </div>
 
         {/* Input row */}

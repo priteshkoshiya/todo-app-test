@@ -13,3 +13,13 @@
   --font-heading: system-ui, sans-serif;
   --font-body: system-ui, sans-serif;
 }
+
+[data-theme="light"] {
+  --color-bg: #F1F5F9;
+  --color-surface: #FFFFFF;
+  --color-text: #0F172A;
+  --color-muted: #64748B;
+  --color-primary: #4A63D3;
+  --color-accent: #5E7BFF;
+  --color-hairline: rgba(15, 23, 42, 0.1);
+}
