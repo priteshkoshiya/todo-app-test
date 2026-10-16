@@ -63,7 +63,7 @@ export default function TodoApp() {
         {/* Header */}
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-text tracking-tight">
-            My Tasks 11111111111
+            My Tasks
           </h1>
           {tasks.length > 0 && (
             <p className="mt-1 text-sm text-muted">
